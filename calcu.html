@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="profile.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TNEB Management System</title>
+   
+</head>
+<body>
+    <video autoplay loop muted plays-inline class="back-video">
+    <source src="video1.mp4" type="video/mp4">
+    </video>
+<nav>
+    <h1>Electro Billing</h1>
+<ul>
+    <li><a onclick="location.href='home.html'">HOME</a></li>
+    <li><a onclick="location.href='calcu.html'">CALCULATION</a></li>
+    <li><a onclick="location.href='about.html'">ABOUT</a></li>
+    <li><a onclick="location.href='profile.html'">PROFILE</a></li>
+</ul></nav>
+    <center>
+    <div id="form-box">
+        <h2>TNEB Unit Cost Calculator</h2>
+        <label for="module">Select Module:</label>
+        <select id="module">
+            <option value="agriculture">Agriculture</option>
+            <option value="government_hospital">Government Hospital</option>
+            <option value="domestic">Domestic</option>
+            <option value="industry">Industry</option>
+            <option value="super_market">Super Market</option>
+            <option value="commercial">commercial</option>
+        </select>
+        <br>
+        <label for="units">Enter Units Consumed:</label>
+        <input type="number" id="units" placeholder="Enter units">
+        <br>
+        <button onclick="calculateCost()">Calculate Cost</button>
+        <br>
+        <p id="result"></p>
+ </div> 
+
+        <script>
+            function calculateCost() {
+                var module = document.getElementById("module").value;
+                var units = document.getElementById("units").value;
+
+                // Add your logic to calculate the cost based on the selected module and units consumed
+                // For simplicity, let's assume a fixed cost per unit for each module
+                var costPerUnit = getCostPerUnit(module);
+                var totalCost = units * costPerUnit;
+
+                document.getElementById("result").innerHTML = "Total Cost: Rs." + totalCost.toFixed(2);
+            }
+
+            function getCostPerUnit(module) {
+                // Add your logic to retrieve the cost per unit based on the selected module
+                // You can use a switch statement or an object to define the cost for each module
+                switch (module) {
+                    case "agriculture":
+                        return 2.50;
+                    case "government_hospital":
+                        return 3.50;
+                    case "domestic":
+                        return 3.0;
+                    case "industry":
+                        return 8.0;
+                    case "super_market":
+                        return 10.0;
+                    case "commercial":
+                        return 5.0;
+                    default:
+                        return 0.00; // Default value if module is not recognized
+                }
+            }
+        </script>
+    </div>
+    </center>
+</body>
+</html>
+
